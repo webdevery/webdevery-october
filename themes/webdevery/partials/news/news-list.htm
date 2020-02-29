@@ -1,0 +1,34 @@
+[blogPosts]
+pageNumber = "{{ :page }}"
+categoryFilter = "news"
+postsPerPage = 500
+noPostsMessage = "Записей не найдено"
+sortOrder = "published_at desc"
+categoryPage = "home"
+postPage = "new-detail"
+==
+<div class="news">
+    <div class="content">
+        
+      <div class="news-list">
+        {%for post in blogPosts.posts%}
+        <a href="{{post.url}}" class="news-item">
+          <div class="news-item-img">
+              {%for img in post.featured_images|slice(0,1)%}
+            <img src="{{ img.path | resize(400, 400) }}" alt="{{post.title}}" />
+                {%endfor%}
+          </div>
+          <div class="news-item-title">
+            {{post.title}}
+          </div>
+          <div class="news-item-date">
+            {{post.publiched_at|date('f M Y')}}
+          </div>
+          <div class="news-item-link">
+            Читать далее...
+          </div>
+        </a>
+        {%endfor%}
+      </div>
+    </div>
+  </div>

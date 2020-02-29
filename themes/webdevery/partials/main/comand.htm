@@ -1,0 +1,48 @@
+[blogPosts]
+pageNumber = "{{ :page }}"
+categoryFilter = "comand"
+postsPerPage = 4
+noPostsMessage = "Записей не найдено"
+sortOrder = "published_at desc"
+categoryPage = "home"
+postPage = "home"
+==
+<div class="comand">
+    <div class="angleBlock" id="second-block">
+      <div class="angleBlock-content">
+        <div class="angleBlock-left"></div>
+        <div class="angleBlock-right"></div>
+        {%component 'contenteditor' file="main/comand-title.htm" fixture="h2"%}
+      </div>
+    </div>
+    <div class="comand-row">
+      <div class="comand-text">
+        {%component 'contenteditor' file="main/comand-text.htm" fixture="p"%}
+        <a href="#callback" class="btn-plus-text black js-popup">
+          <span class="plus-blue"></span>
+          заказать сайт
+        </a>
+      </div>
+      <div class="comand-list">
+        {%for post in blogPosts.posts%}
+        <div class="comand-user">
+          <div class="user-img">
+            {%for img in post.featured_images|slice(0,1)%}
+            <img src="{{img.path}}" alt="{{post.title}}" />
+            {%endfor%}
+          </div>
+          <div class="user-name">
+            {{post.title}}
+          </div>
+          <div class="user-type">
+            {{post.content}}
+          </div>
+        </div>
+        {%endfor%}
+      </div>
+    </div>
+    <a href="#callback" class="btn-plus-text black js-popup mobile">
+      <span class="plus-blue"></span>
+      заказать сайт
+    </a>
+  </div>

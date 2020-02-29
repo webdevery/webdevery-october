@@ -1,0 +1,41 @@
+[blogPosts]
+pageNumber = "{{ :page }}"
+categoryFilter = "services"
+postsPerPage = 20
+noPostsMessage = "Услуг нету"
+sortOrder = "published_at asc"
+categoryPage = "home"
+postPage = "home"
+==
+{% set posts = blogPosts.posts %}
+{% set num = 1 %}
+<div class="doing">
+  <div class="doing-text">
+    {%component 'contenteditor' file="main/services-title.htm" fixture="h2"%}
+    {%component 'contenteditor' file="main/services-text.htm" fixture="p"%}
+  </div>
+  <div class="doing-list swiper-container">
+    <div class="swiper-wrapper">
+      {% for post in posts %}
+      <a href="#callback" class="doing-item swiper-slide js-popup">
+        <div class="item-num">
+          {% if (num < 10) %}0{% endif %}{{num}}
+        </div>
+        {% set num = num +1 %}
+        <h4>{{post.title}}</h4>
+        <div class="item-text">
+          {% if post.excerpt %}
+            {{ post.excerpt }}
+          {% else %}
+              {{ post.content_html|raw }}
+          {% endif %}
+        </div>
+        <span class="plus-blue item-plus"></span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="doing-word">
+    Web-devery
+  </div>
+</div>

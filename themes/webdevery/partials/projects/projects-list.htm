@@ -1,0 +1,45 @@
+[blogPosts]
+pageNumber = "{{ :page }}"
+categoryFilter = "projects"
+postsPerPage = 500
+noPostsMessage = "Записей не найдено"
+sortOrder = "published_at desc"
+categoryPage = "home"
+postPage = "home"
+==
+<div class="alone">
+    <div class="present">
+      <div class="present-list">
+        {% for post in blogPosts.posts %}
+        <div class="present-item">
+          <div class="present-img">
+            <div class="present-spacer"></div>
+            <div class="present-layers">
+              {%for img in post.featured_images | slice(0,3) %}
+              <div class="layer">
+                <div class="layer-perspective">
+                  <div class="layer-border">
+                    <a href="{{img.path}}" rel="group1" class="layer-box">
+                      <img src="{{ img.path | resize(200, 700) }}" alt="{{post.title}}" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+              {%endfor%}
+            </div>
+          </div>
+          <div class="present-text">
+            <h3>{{post.title}}</h3>
+            <p>
+              {{post.content}}
+            </p>
+            <a href="#callback" class="btn-plus-text js-popup">
+              <span class="plus-blue"></span>
+              заказать сайт
+            </a>
+          </div>
+        </div>
+        {%endfor%}
+      </div>
+    </div>
+  </div>

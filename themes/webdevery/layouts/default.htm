@@ -1,0 +1,53 @@
+description = "Default layout"
+
+[SeoCmsPage]
+==
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link
+      rel="shortcut icon"
+      href="{{'assets/favicon.jpg'|theme}}"
+      type="image/jpeg"
+    />
+    
+    {%component 'SeoCmsPage' %}
+    {% styles %}
+
+    <link
+      rel="stylesheet"
+      href="{{'assets/libs/swiper/swiper.min.css'|theme}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{'assets/libs/fancybox/fancybox.min.css'|theme}}"
+    />
+    <link rel="stylesheet" href="{{'assets/css/style.css'|theme}}" />
+  </head>
+  <body>
+    <img src="{{'assets/images/logoFull.png'|theme}}" alt="" style="display: none;" />
+    <div class="wrapper">
+      {% partial 'templ/header' %}
+      <div class="page">
+        {% page %}
+      </div>
+      <a href="#page" class="goto-up">
+        <i class="icon-str-up"> </i>
+      </a>
+      {% partial 'templ/footer' %}
+      {% partial 'templ/modal' %}
+    </div>
+
+    <script src="{{'assets/libs/jquery/jquery-3.4.1.js'|theme}}"></script>
+    <script src="{{'assets/libs/swiper/swiper.min.js'|theme}}"></script>
+    <script src="{{'assets/libs/fancybox/fancybox.min.js'|theme}}"></script>
+    <script src="{{'assets/libs/particles/particles.min.js'|theme}}"></script>
+    <script src="{{'assets/js/main.js'|theme}}"></script>
+
+    {% framework extras %} {% scripts %}
+  </body>
+</html>

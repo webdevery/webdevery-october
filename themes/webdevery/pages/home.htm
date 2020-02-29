@@ -1,0 +1,29 @@
+title = "WebDevery - Digital production"
+url = "/"
+layout = "default"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+
+[contenteditor]
+==
+{% partial '/main/banner' %}
+
+{% partial '/main/services' %}
+
+<div class="angleBlock" id="second-block">
+  <div class="angleBlock-content">
+    <div class="angleBlock-left"></div>
+    <div class="angleBlock-right"></div>
+    <h2>О нас</h2>
+    {%component 'contenteditor' file="main/about-text.htm" fixture="p"%}
+  </div>
+</div>
+
+{% partial '/main/tools' %}
+
+{% partial '/main/portfolio' %}
+
+{% partial '/main/comand' %}
+
+{% partial '/main/news' %}
