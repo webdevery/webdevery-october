@@ -1,3 +1,10 @@
+[menu menu3]
+start = "id-5"
+activeNode = 0
+listItemClasses = "footer-link"
+primaryClasses = "footer-menu"
+numberOfLevels = 1
+==
 <div class="footer">
     <div class="content">
       <div class="row">
@@ -10,15 +17,7 @@
           <div class="footer-title">
             Меню
           </div>
-          <p>
-            <a href="/projects/">Портфолио</a>
-          </p>
-          <p>
-            <a href="/about/">Наша команда</a>
-          </p>
-          <p>
-            <a href="/news/">Публикации</a>
-          </p>
+          {% component "menu3" %}
         </div>
         <div class="col">
           <div class="footer-title">
@@ -55,6 +54,7 @@
               type="text"
               class="footer-input"
               name="phone"
+              required
               placeholder="Введите телефон"
             />
             <button class="footer-button">
@@ -63,6 +63,7 @@
           </form>
         </div>
       </div>
+      <a style="display:none" href='#success' class="js-popup"></a>
     </div>
     <div class="footer-down">
       <div class="content">

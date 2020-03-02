@@ -1,17 +1,34 @@
+[menu]
+start = "id-3"
+activeNode = 0
+listItemClasses = "menu-item"
+primaryClasses = "header-menu-left"
+numberOfLevels = 1
+
+[menu menu2]
+start = "id-4"
+activeNode = 0
+listItemClasses = "menu-item"
+primaryClasses = "header-menu-right"
+numberOfLevels = 1
+
+[menu menu3]
+start = "id-5"
+activeNode = 0
+listItemClasses = "footer-link"
+primaryClasses = "footer-menu"
+numberOfLevels = 1
+==
 <div class="header">
     <div class="header-menu">
-      <div class="header-menu-left">
-        <a href="/projects/" class="menu-item">портфолио</a>
-        <a href="/about/" class="menu-item">Наша команда</a>
-      </div>
+      
+      {% component "menu" %}
       <a href="/" class="logo">
         <span class="logo-img"></span>
         <span class="logo-text">WebDevery</span>
       </a>
-      <div class="header-menu-right">
-        <a href="/news/" class="menu-item">публикации</a>
-        <a href="/contacts/" class="menu-item">Контакты</a>
-      </div>
+      {% component "menu2" %}
+     
     </div>
     <div class="header-burger">
       <a href="" class="header-burger-btn">
@@ -23,15 +40,8 @@
             <div class="footer-title">
               Меню
             </div>
-            <p>
-              <a href="/projects/">Портфолио</a>
-            </p>
-            <p>
-              <a href="/about/">Наша команда</a>
-            </p>
-            <p>
-              <a href="/news/">Публикации</a>
-            </p>
+            {% component "menu3" %}
+            
           </div>
           <div class="col">
             <div class="footer-title">
@@ -68,6 +78,7 @@
                 type="text"
                 class="footer-input"
                 name="phone"
+                required
                 placeholder="Введите телефон"
               />
               <button class="footer-button">

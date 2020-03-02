@@ -2,6 +2,42 @@ description = "Default layout"
 
 [SeoCmsPage]
 ==
+<?php
+function onSendMess(){
+    if(post('name')){
+        if(post('phone')){
+          $templName = 'new-order';
+          $vars = [
+              'name' =>  post('name'),
+               'phone' => post('phone'),
+               'mail' => post('mail'),
+               'text' => post('text')
+              ];
+      }else{
+        $templName = 'contacts-callback';
+        $vars = [
+              'name' =>  post('name'),
+               'mail' => post('mail'),
+               'text' => post('text')
+              ];
+      }
+    }else{
+        $templName = 'new-callback';
+        $vars = [
+            'phone' => post('phone'),
+           ];
+    }
+    if(Mail::send($templName, $vars,function($message){
+        $message->to(array('nagiboter@bk.ru','donaldduck1777@gmail.com'), 'Admin Person');
+        })
+    ){
+        $this['success'] = $vars;
+    }else{
+        $this['error'] = 'все плохо';
+    }
+}
+?>
+==
 <!DOCTYPE html>
 <html lang="ru">
   <head>
@@ -27,6 +63,8 @@ description = "Default layout"
       href="{{'assets/libs/fancybox/fancybox.min.css'|theme}}"
     />
     <link rel="stylesheet" href="{{'assets/css/style.css'|theme}}" />
+
+    
   </head>
   <body>
     <img src="{{'assets/images/logoFull.png'|theme}}" alt="" style="display: none;" />
@@ -41,13 +79,13 @@ description = "Default layout"
       {% partial 'templ/footer' %}
       {% partial 'templ/modal' %}
     </div>
-
+    
     <script src="{{'assets/libs/jquery/jquery-3.4.1.js'|theme}}"></script>
+    {% framework extras %}
+    {% scripts %}
     <script src="{{'assets/libs/swiper/swiper.min.js'|theme}}"></script>
     <script src="{{'assets/libs/fancybox/fancybox.min.js'|theme}}"></script>
     <script src="{{'assets/libs/particles/particles.min.js'|theme}}"></script>
     <script src="{{'assets/js/main.js'|theme}}"></script>
-
-    {% framework extras %} {% scripts %}
   </body>
 </html>

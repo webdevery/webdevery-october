@@ -1,0 +1,45 @@
+description = "Шаблон для страницы 404"
+==
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Увы но такой страницы нет</title>
+    <link
+      rel="shortcut icon"
+      href="{{'assets/favicon.jpg'|theme}}"
+      type="image/jpeg"
+    />
+    
+    {%component 'SeoCmsPage' %}
+    {% styles %}
+
+    <link
+      rel="stylesheet"
+      href="{{'assets/libs/swiper/swiper.min.css'|theme}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{'assets/libs/fancybox/fancybox.min.css'|theme}}"
+    />
+    <link rel="stylesheet" href="{{'assets/css/style.css'|theme}}" />
+  </head>
+  <body>
+    <div class="wrapper p404-wrapper">
+      {% partial 'templ/header' %}
+      <div class="page">
+        {% page %}
+      </div>
+    </div>
+    
+    <script src="{{'assets/libs/jquery/jquery-3.4.1.js'|theme}}"></script>
+    {% framework extras %}
+    {% scripts %}
+    <script src="{{'assets/libs/swiper/swiper.min.js'|theme}}"></script>
+    <script src="{{'assets/libs/fancybox/fancybox.min.js'|theme}}"></script>
+    <script src="{{'assets/libs/particles/particles.min.js'|theme}}"></script>
+    <script src="{{'assets/js/main.js'|theme}}"></script>
+  </body>
+</html>

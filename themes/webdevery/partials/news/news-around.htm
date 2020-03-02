@@ -1,0 +1,81 @@
+{%set prev = 0%}
+{%set prevKey = 0%}
+{%set next = 0%}
+{%set nextKey = 0%}
+{%set key = 0%}
+{%set find = 0%}
+{%set setted = 0%}
+
+{%for post in posts%}
+    {%if find == 1 %} 
+        {%if setted == 0 %} 
+            {%set next = post.id%}
+            {%set nextKey = key%}
+            {%set setted = 1%}
+        {%endif%}
+    {%endif%}
+
+    {%if post.id == thisPost.id%} 
+        {%set find = 1%} 
+    {%endif%}
+
+    {%if find == 0 %} 
+        {%set prev = post.id%}
+        {%set prevKey = key%}
+    {%endif%}
+    {%set key = key+1%}
+{%endfor%}
+<div class="news-around">
+    <div class="content">
+      <div class="news-around-list">
+        {%if posts[prevKey].id == prev%}
+        {%set postOne = posts[prevKey]%}
+        <a href="{{postOne.url}}" class="news-around-item">
+          <div class="news-around-img pos-img">
+            {%for img in postOne.featured_images|slice(0,1)%}
+            <img src="{{img.path}}" alt="{{postOne.title}}" class=''/>
+            {%endfor%}
+          </div>
+          <div class="news-around-text">
+            <small>
+              Предыдущая статья
+            </small>
+            <h5>
+                {{postOne.title}}
+            </h5>
+            <small>
+                {{postOne.publiched_at|date('d M Y')}}
+            </small>
+            <div class="news-around-link">
+              Читать далее
+            </div>
+          </div>
+        </a>
+        {%endif%}
+        {%if posts[nextKey].id == next%}
+        {%set postOne = posts[nextKey]%}
+        <a href="{{postOne.url}}" class="news-around-item">
+          <div class="news-around-img pos-img">
+            {%for img in postOne.featured_images|slice(0,1)%}
+            <img src="{{img.path}}" alt="{{postOne.title}}"/>
+            {%endfor%}
+          </div>
+          <div class="news-around-text">
+            <small>
+              Следующая статья
+            </small>
+            <h5>
+                {{postOne.title}}
+            </h5>
+            <small>
+                {{postOne.publiched_at|date('d M Y')}}
+            </small>
+            <div class="news-around-link">
+              Читать далее
+            </div>
+          </div>
+        </a>
+        {%endif%}
+      </div>
+    </div>
+  </div>
